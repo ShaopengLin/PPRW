@@ -6,6 +6,7 @@ import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import User from './User';
 import CurrentUser from './CurrentUser';
 import { useHistory } from "react-router-dom";
+
 function Login() {
   const [user, setUser] = useState(new User());
   const [email, setEmail] = useState("");
@@ -78,7 +79,7 @@ function Login() {
           minHeight: "70px",
           marginBottom: "20px"
         }}
-        onClick={()=>{CurrentUser.handleLogIn(email, password).then(()=>{
+        onClick={()=>{CurrentUser.handleLogIn(email,user.password).then(()=>{
           history.push("/interface");
         }).catch(err => {
           console.log(err.message);
@@ -102,7 +103,7 @@ function Login() {
         }}
         onClick={()=>{
 
-          user.handleSignUp().then(()=>{CurrentUser.handleLogIn(email, password).then(()=>{
+          user.handleSignUp().then(()=>{CurrentUser.handleLogIn(email, user.password).then(()=>{
             history.push("/interface");
           }).catch(err => {
             console.log(err.message);

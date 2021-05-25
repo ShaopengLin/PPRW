@@ -17,6 +17,7 @@ import GridListTileBar from "@material-ui/core/GridListTileBar";
 import CurrentUser from "./CurrentUser";
 import { useHistory } from "react-router-dom";
 import GridMenu from './Menu';
+import cu from './CurrentUser'
 const useStyles = makeStyles((theme) => ({
   menu: {
     "& svg": {
@@ -218,6 +219,7 @@ function Interface() {
           ))}
         </GridList>
       </div>
+      <button onClick = {() => {cu.setLastName("haha@gmail.com")}}>test</button>
     </div>
   );
 }

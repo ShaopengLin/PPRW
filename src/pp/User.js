@@ -15,6 +15,7 @@ class User {
   }
   /**
    * Creates a firebase document for this corresponding user
+   *  @return {Promise} If excuted successfully return a promise, o/w throws an error containing corresponding messages
    */
   createUserInDB = () => {
 
@@ -24,7 +25,11 @@ class User {
       .collection("UserData")
       .doc(fire.auth().currentUser.uid)
       .set(this.#userProps);
-   })
+   }).catch((err) => {
+    return new Promise((resolve, reject) => {
+      throw new Error(err.message);
+    });
+  });
   
     
   };
